@@ -1,4 +1,4 @@
-# loto
+# vue bingo
 
 ## Project setup
 ```
@@ -8,6 +8,7 @@ yarn install
 ### Compiles and hot-reloads for development
 ```
 yarn serve
+open browser at http://localhost:8080/ and have fun
 ```
 
 ### Compiles and minifies for production

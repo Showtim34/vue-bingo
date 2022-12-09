@@ -1,8 +1,26 @@
 <template>
-  <div id="waiting" :class="{'hide' : this.gameStarted}" @click="initGame"></div>
+  <div id="waiting" :class="{'hide' : this.gameStarted}"></div>
+  <div id="quine" :class="{
+    'hide' : ! this.quine, 
+    'q1': this.quineClass == 'q1',
+    'q2': this.quineClass == 'q2',
+    'q3': this.quineClass == 'q3',
+    'q4': this.quineClass == 'q4',
+    'q5': this.quineClass == 'q5',
+    'q6': this.quineClass == 'q6',
+    'q7': this.quineClass == 'q7',
+    'q8': this.quineClass == 'q8',
+    'q9': this.quineClass == 'q9',
+    'q12': this.quineClass == 'q12',
+    'q13': this.quineClass == 'q13',
+    'q14': this.quineClass == 'q14',
+    'q15': this.quineClass == 'q15',
+    'q16': this.quineClass == 'q16'
+
+  }" ref="quineLayer"></div>
   <div class="row" v-if="this.gameStarted">
     <div class="col-6 text-center">
-      <img src="https://i.pravatar.cc/300" class="avatar mb-5 mt-5"><br>
+      <AvatarPicture></AvatarPicture>
       <button @click="this.tirage" class="btn btn-primary">Tirage d'une boule</button>
 
       <div class="row">
@@ -24,22 +42,64 @@
 
 <script>
 import Ball from './Ball.vue'
+import AvatarPicture from './Avatar-picture.vue'
+
 export default {
   name: 'LottoApp',
-  components: { Ball },
+  components: { Ball, AvatarPicture },
   data() {
     return {
       gameStarted: false,
       boules: [],
       restants: [],
-      lastTirage: null
+      lastTirage: null,
+
+      quine: false,
+      quineClasses:['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q12', 'q13', 'q14', 'q15', 'q16'],
+      quineClass: '',
     }
   },
+
+  created() {
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key == 'Escape') {
+        this.gameStarted = false
+      }
+
+      if (e.key == 'Enter') {
+        this.setQuine()
+      }
+
+      if (e.key == ' ') {
+
+        if (! this.gameStarted)
+          this.initGame()
+          else
+          this.tirage();
+      }
+
+    });
+  },
+
   mounted() {
     
   },
 
   methods: {
+    setQuine()
+    {
+      this.quine = ! this.quine
+      if (this.quine) {
+        this.quineClass = this.quineClasses[Math.floor(Math.random()*this.quineClasses.length)]
+        this.$refs.quineLayer.classList.add(this.quineClass)
+      } else {
+        this.$refs.quineLayer.classList.remove(this.quineClass)
+      }
+
+      console.log(this.quineClass, this.quine)
+    },
+
     initGame() {
       this.gameStarted = true;
       let i = 1
@@ -57,8 +117,10 @@ export default {
         exists = this.boules.includes(rand);
       }
       this.lastTirage = rand
-      this.boules.push(rand)
+      this.boules.push((rand < 10) ? '0' + rand : rand)
+      this.boules.sort()
       //this.boules.reverse()
+      this.playSound("/numbers/1.mp3")
 
       setTimeout(() => {
         let tmp = []
@@ -67,9 +129,19 @@ export default {
             tmp.push(n)
         })
         this.restants = tmp
-      }, 6000);
+
+        
+      }, 4000);
 
     },
+
+    playSound (sound) {
+      if(sound) {
+        var audio = new Audio(sound);
+        audio.play();
+      }
+    },
+
     randomNumber(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
     },
@@ -101,6 +173,91 @@ export default {
   z-index: 100;
 }
 #waiting.hide {
+  height: 0vh;
+}
+
+#quine {
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  top:0;
+  left:0;
+  transition: height 1s;
+  z-index: 100;
+}
+#quine.q1 {
+  background:url("@/assets/quine-1.gif") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q2 {
+  background:url("@/assets/quine-2.webp") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q3 {
+  background:url("@/assets/quine-3.gif") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q4 {
+  background:url("@/assets/quine-4.webp") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q5 {
+  background:url("@/assets/quine-5.webp") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q6 {
+  background:url("@/assets/quine-6.gif") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q7 {
+  background:url("@/assets/quine-7.gif") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q8 {
+  background:url("@/assets/quine-8.webp") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q9 {
+  background:url("@/assets/quine-9.webp") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+
+#quine.q12 {
+  background:url("@/assets/quine-12.gif") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q13 {
+  background:url("@/assets/quine-13.webp") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q14 {
+  background:url("@/assets/quine-14.gif") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q15 {
+  background:url("@/assets/quine-15.webp") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+#quine.q16 {
+  background:url("@/assets/quine-16.webp") no-repeat center center fixed;
+  background-size: cover ;
+}
+
+
+#quine.hide {
   height: 0vh;
 }
 </style>

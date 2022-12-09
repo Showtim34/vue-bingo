@@ -20,13 +20,11 @@
   }" ref="quineLayer"></div>
   <div class="row" v-if="this.gameStarted">
     <div class="col-6 text-center">
-      <AvatarPicture></AvatarPicture>
-      <button @click="this.tirage" class="btn btn-primary">Tirage d'une boule</button>
-
-      <div class="row">
+      <AvatarPicture :state="this.state"></AvatarPicture>
+      <div class="row listBoules">
         <div class="col-1" v-for="(boule) in boules" :key="boule">
           <div class="boule">
-            <em>{{boule}}</em>
+            <em><span v-if="boule<10">0</span>{{boule}}</em>
           </div>
         </div>
       </div>
@@ -54,9 +52,12 @@ export default {
       restants: [],
       lastTirage: null,
 
+      state: 'breathe',
       quine: false,
       quineClasses:['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q12', 'q13', 'q14', 'q15', 'q16'],
       quineClass: '',
+
+      numbers: 17
     }
   },
 
@@ -91,19 +92,20 @@ export default {
     {
       this.quine = ! this.quine
       if (this.quine) {
+        this.playSound("/numbers/victoire.mp3")
         this.quineClass = this.quineClasses[Math.floor(Math.random()*this.quineClasses.length)]
         this.$refs.quineLayer.classList.add(this.quineClass)
       } else {
         this.$refs.quineLayer.classList.remove(this.quineClass)
       }
 
-      console.log(this.quineClass, this.quine)
+      
     },
 
     initGame() {
       this.gameStarted = true;
       let i = 1
-      while (this.restants.length != 90) {
+      while (this.restants.length != this.numbers) {
         this.restants.push(i);
         i++
       }
@@ -113,14 +115,25 @@ export default {
       let exists = true;
       let rand;
       while (exists) {
-        rand = this.randomNumber(1, 90);
+        rand = this.randomNumber(1, this.numbers + 1);
+        console.log("-", rand)
         exists = this.boules.includes(rand);
       }
-      this.lastTirage = rand
-      this.boules.push((rand < 10) ? '0' + rand : rand)
-      this.boules.sort()
+
+      this.boules.push(rand)
+      //this.boules.sort()
+
       //this.boules.reverse()
-      this.playSound("/numbers/1.mp3")
+      
+      this.state = 'talk'
+      this.playSound("/numbers/"+rand+".m4a")
+
+
+
+      setTimeout(() => {
+        this.state = 'breathe'
+        this.lastTirage = rand
+      }, 3000);
 
       setTimeout(() => {
         let tmp = []
@@ -129,9 +142,7 @@ export default {
             tmp.push(n)
         })
         this.restants = tmp
-
-        
-      }, 4000);
+      }, 6000);
 
     },
 
@@ -260,4 +271,6 @@ export default {
 #quine.hide {
   height: 0vh;
 }
+
+.listBoules {margin-top: 165px;}
 </style>

@@ -39,7 +39,7 @@ export default {
     this.init();
     this.interval = setInterval(() => {
       this.move();
-    }, 30);
+    }, 60);
   },
   watch: {
     lastTirage: function() {
@@ -126,6 +126,7 @@ export default {
   height: 54px;
   margin: 0.3rem;
   position: relative;
+  z-index: 50;
 }
 
 .boule em {

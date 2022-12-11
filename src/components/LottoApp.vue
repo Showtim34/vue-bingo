@@ -57,7 +57,7 @@ export default {
       quineClasses:['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q12', 'q13', 'q14', 'q15', 'q16'],
       quineClass: '',
 
-      numbers: 17
+      numbers: 90
     }
   },
 
@@ -73,6 +73,9 @@ export default {
       }
 
       if (e.key == ' ') {
+
+        if (this.quine)
+        return
 
         if (! this.gameStarted)
           this.initGame()
@@ -90,16 +93,15 @@ export default {
   methods: {
     setQuine()
     {
+      let sounds = ['victoire-1.mp3', 'victoire-2.m4a','victoire-3.m4a','victoire-4.m4a','victoire-5.m4a','victoire-6.m4a']
       this.quine = ! this.quine
       if (this.quine) {
-        this.playSound("/numbers/victoire.mp3")
+        this.playSound("/victoire/" + sounds[this.randomNumber(0, 6)])
         this.quineClass = this.quineClasses[Math.floor(Math.random()*this.quineClasses.length)]
         this.$refs.quineLayer.classList.add(this.quineClass)
       } else {
         this.$refs.quineLayer.classList.remove(this.quineClass)
       }
-
-      
     },
 
     initGame() {
@@ -116,11 +118,10 @@ export default {
       let rand;
       while (exists) {
         rand = this.randomNumber(1, this.numbers + 1);
-        console.log("-", rand)
         exists = this.boules.includes(rand);
       }
 
-      this.boules.push(rand)
+      
       //this.boules.sort()
 
       //this.boules.reverse()
@@ -131,6 +132,7 @@ export default {
 
 
       setTimeout(() => {
+        this.boules.push(rand)
         this.state = 'breathe'
         this.lastTirage = rand
       }, 3000);
@@ -272,5 +274,5 @@ export default {
   height: 0vh;
 }
 
-.listBoules {margin-top: 165px;}
+.listBoules {margin-top: 120px;}
 </style>

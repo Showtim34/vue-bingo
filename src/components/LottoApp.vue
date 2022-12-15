@@ -20,7 +20,7 @@
   }" ref="quineLayer"></div>
   <div class="row" v-if="this.gameStarted">
     <div class="col-6 text-center">
-      <AvatarPicture :state="this.state"></AvatarPicture>
+      <AvatarPicture :state="this.state" :change="this.changeAvatar"></AvatarPicture>
       <div class="row listBoules">
         <div class="col-1" v-for="(boule) in boules" :key="boule">
           <div class="boule">
@@ -57,7 +57,8 @@ export default {
       quineClasses:['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q12', 'q13', 'q14', 'q15', 'q16'],
       quineClass: '',
 
-      numbers: 90
+      numbers: 90,
+      changeAvatar: 0,
     }
   },
 
@@ -122,7 +123,7 @@ export default {
       }
 
       
-      //this.boules.sort()
+      this.boules.sort()
 
       //this.boules.reverse()
       
@@ -135,6 +136,7 @@ export default {
         this.boules.push(rand)
         this.state = 'breathe'
         this.lastTirage = rand
+        this.changeAvatar = this.lastTirage
       }, 3000);
 
       setTimeout(() => {

@@ -151,7 +151,7 @@ export default {
 }
 .selected {
   scale: 10;
-  z-index: 10;
+  z-index: 1000;
   right: 960px !important;
   top: 540px !important;
   

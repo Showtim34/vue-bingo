@@ -1,7 +1,35 @@
 <template>
   <div class="avatar-container">
-    <img src="@/assets/nico/nico-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
-    <img src="@/assets/nico/nico-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 0" src="@/assets/selfie/nico-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 0" src="@/assets/selfie/nico-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 1" src="@/assets/selfie/younes-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 1" src="@/assets/selfie/younes-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 2" src="@/assets/selfie/serge-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 2" src="@/assets/selfie/serge-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 3" src="@/assets/selfie/maela-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 3" src="@/assets/selfie/maela-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 4" src="@/assets/selfie/lolita-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 4" src="@/assets/selfie/lolita-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 5" src="@/assets/selfie/laurent-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 5" src="@/assets/selfie/laurent-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 6" src="@/assets/selfie/juju-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 6" src="@/assets/selfie/juju-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 7" src="@/assets/selfie/jessica-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 7" src="@/assets/selfie/jessica-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 8" src="@/assets/selfie/eric-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 8" src="@/assets/selfie/eric-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 9" src="@/assets/selfie/clementvieux-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 9" src="@/assets/selfie/clementvieux-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 10" src="@/assets/selfie/clementsapin-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 10" src="@/assets/selfie/clementsapin-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 11" src="@/assets/selfie/clementlunette-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 11" src="@/assets/selfie/clementlunette-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 12" src="@/assets/selfie/clementbonnet-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 12" src="@/assets/selfie/clementbonnet-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 13" src="@/assets/selfie/caro-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 13" src="@/assets/selfie/caro-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 14" src="@/assets/selfie/camille-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 14" src="@/assets/selfie/camille-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
     <img src="@/assets/danse.webp" class="img-fluid danse" />
   </div>
 </template>
@@ -11,14 +39,22 @@
 
 export default {
   name: 'AvatarPicture',
-  props: ['state'],
+  props: ['state', 'change'],
   data() {
     return {
-      
+      img: '',
+      rand: 0,
     }
   },
+  watch: {
+    change: function () { // watch it
+      setTimeout( () => {
+          this.rand = this.randomNumber();
+        }, 3000)
+      } 
+  },
   mounted() {
-    
+    this.rand = this.randomNumber();
   },
  
   unmounted() {
@@ -26,7 +62,9 @@ export default {
   },
 
   methods: {
-    
+    randomNumber() {
+      return Math.floor(Math.random() * (15));
+    },
   }
 }
 </script>
@@ -35,9 +73,9 @@ export default {
 <style>
 .avatar-container {width: 280px; position: relative; margin:0 auto; height: 400px;}
 .avatar-container img {position:absolute; left : 0}
-.top { top: 0px;  z-index:10}
-.bottom { top: 320px;   z-index:9}
-.danse { top: 330px; left: 50px; z-index:5;}
+.top { top: 0px;  z-index:10; }
+.bottom { top: 320px;   z-index:9; }
+.danse { top: 300px; left: 50px; z-index:5;}
 
 .top.breathe {animation: 0.6s linear .1s infinite alternate breatheTop;}
 .bottom.breathe {animation: .5s linear .1s infinite alternate breatheBottom;}

@@ -30,6 +30,8 @@
     <img v-if="this.rand == 13" src="@/assets/selfie/caro-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
     <img v-if="this.rand == 14" src="@/assets/selfie/camille-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
     <img v-if="this.rand == 14" src="@/assets/selfie/camille-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
+    <img v-if="this.rand == 15" src="@/assets/selfie/lola-1.png" class="img-fluid top" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}"/>
+    <img v-if="this.rand == 15" src="@/assets/selfie/lola-2.png" class="img-fluid bottom" v-bind:class="{'talk': this.state == 'talk', 'breathe': this.state == 'breathe'}" />
     <img src="@/assets/danse.webp" class="img-fluid danse" />
   </div>
 </template>
